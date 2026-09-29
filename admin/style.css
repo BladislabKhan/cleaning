@@ -1,0 +1,8 @@
+@import url("../assets/css/vendor/bootstrap-grid.css");
+@import url("../assets/css/core/reset.css?v=20260426a");
+@import url("./styles/core/base.css");
+@import url("./styles/layout/sidebar-shell.css");
+@import url("./styles/pages/dashboard-and-crm.css");
+@import url("./styles/components/editor-and-entities.css");
+@import url("./styles/components/menu-and-footer-layout.css");
+@import url("./styles/core/responsive.css");

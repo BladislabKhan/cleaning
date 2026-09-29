@@ -1,0 +1,52 @@
+.brand-logo-shell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.site-header .brand-logo-shell {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(190, 214, 222, 0.72);
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.footer-grid--bootstrap {
+  display: block;
+  padding-bottom: 28px;
+}
+
+.footer-grid__row > [class*="col-"] {
+  display: flex;
+}
+
+.footer-grid__row .footer-column {
+  width: 100%;
+}
+
+.footer-note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .brand-logo-shell {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-logo {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -1,0 +1,39 @@
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+.github/ export-ignore
+.vscode/ export-ignore
+docs/ export-ignore
+tests/ export-ignore
+__tests__/ export-ignore
+scripts/ export-ignore
+logs/ export-ignore
+temp/ export-ignore
+README.md export-ignore
+CHANGELOG.md export-ignore
+.eslintrc export-ignore
+.eslintrc.* export-ignore
+.prettierrc export-ignore
+.prettierrc.* export-ignore
+.editorconfig export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+.env.example export-ignore
+LICENSE export-ignore
+Dockerfile export-ignore
+docker-compose.yml export-ignore
+vitest.config.* export-ignore
+jest.config.* export-ignore
+tsconfig.json export-ignore
+*.log export-ignore

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "review-seed-001",
+    "sourceType": "manual",
+    "author": "Дмитрий К.",
+    "text": "Заказывали уборку после ремонта. Команда справилась отлично: убрали строительную пыль, отмыли плитку и окна.",
+    "date": "2026-04-17",
+    "sourceLabel": "Яндекс Карты",
+    "externalUrl": "https://yandex.ru/maps/",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": true
+  },
+  {
+    "id": "review-seed-002",
+    "sourceType": "manual",
+    "author": "Елена М.",
+    "text": "Понравилась аккуратность и пунктуальность. Всё сделали спокойно, без лишней суеты, результат отличный.",
+    "date": "2026-04-17",
+    "sourceLabel": "2ГИС",
+    "externalUrl": "https://2gis.ru/",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": true
+  },
+  {
+    "id": "review-seed-003",
+    "sourceType": "manual",
+    "author": "Ирина Л.",
+    "text": "Обращались для уборки квартиры перед сдачей. Понравилось, что заранее обсудили детали и список работ, а на выезде всё сделали без спешки и с аккуратной проверкой результата по комнатам.",
+    "date": "2026-04-18",
+    "sourceLabel": "Сайт",
+    "externalUrl": "#home/reviews",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": true
+  },
+  {
+    "id": "review-seed-004",
+    "sourceType": "manual",
+    "author": "Андрей Т.",
+    "text": "После ремонта было много пыли в стыках и на подоконниках. Команда приехала вовремя, довела до чистого состояния полы, окна и плитку, по итогу помещение стало полностью готово к работе.",
+    "date": "2026-04-18",
+    "sourceLabel": "Сайт",
+    "externalUrl": "#home/reviews",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": false
+  },
+  {
+    "id": "review-seed-005",
+    "sourceType": "manual",
+    "author": "Оксана В.",
+    "text": "Заказывала поддерживающую уборку для родителей. Отдельно отмечу вежливость и спокойный формат работы: ничего не затягивали, учли пожелания по химии и аккуратно прошли все чувствительные поверхности.",
+    "date": "2026-04-19",
+    "sourceLabel": "Сайт",
+    "externalUrl": "#home/reviews",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": false
+  },
+  {
+    "id": "review-seed-006",
+    "sourceType": "manual",
+    "author": "Павел Н.",
+    "text": "Брали разовый выезд на кухню и санузел перед семейным мероприятием. Хорошо отмыли зоны, где обычно остаются сложные следы, и после уборки всё выглядело заметно опрятнее без резких запахов.",
+    "date": "2026-04-19",
+    "sourceLabel": "MAX",
+    "externalUrl": "#home/reviews",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": false
+  },
+  {
+    "id": "review-seed-007",
+    "sourceType": "manual",
+    "author": "Марина С.",
+    "text": "Вызывали команду перед приездом гостей: важно было быстро привести в порядок квартиру и не повредить деликатные покрытия. Ребята приехали вовремя, заранее уточнили приоритетные зоны и очень аккуратно прошли кухню, санузел и прихожую.",
+    "date": "2026-04-20",
+    "sourceLabel": "Телефон",
+    "externalUrl": "#home/reviews",
+    "isPublished": true,
+    "isHidden": false,
+    "isFeatured": false
+  }
+]

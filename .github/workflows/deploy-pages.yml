@@ -1,0 +1,132 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare static site
+        shell: pwsh
+        run: |
+          $outputDir = Join-Path $PWD "_site"
+          if (Test-Path $outputDir) {
+            Remove-Item -Recurse -Force $outputDir
+          }
+          New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
+
+          $deployItems = @(
+            ".nojekyll",
+            "403.html",
+            "404.html",
+            "500.html",
+            "accessibility.js",
+            "index.html",
+            "robots.txt",
+            "script.js",
+            "site-config.js",
+            "site-editor-defaults.js",
+            "sitemap.xml",
+            "style.css",
+            "admin",
+            "assets",
+            "styles",
+            "uploads"
+          )
+
+          foreach ($item in $deployItems) {
+            if (-not (Test-Path $item)) {
+              continue
+            }
+            Copy-Item -LiteralPath $item -Destination $outputDir -Recurse -Force
+          }
+
+          $version = ('${{ github.sha }}').Substring(0, 8)
+          $owner = '${{ github.repository_owner }}'
+          $repoName = '${{ github.event.repository.name }}'
+          $pagesRoot = "https://$owner.github.io"
+          $siteUrl = if ($repoName -ieq "$owner.github.io") {
+            "$pagesRoot/"
+          } else {
+            "$pagesRoot/$repoName/"
+          }
+
+          $indexPath = Join-Path $outputDir "index.html"
+          $content = Get-Content -LiteralPath $indexPath -Raw -Encoding UTF8
+
+          $content = [regex]::Replace(
+            $content,
+            '(?<=\b(?:src|href|content)=["''])(assets/[^"'']+|style\.css|site-config\.js|script\.js|site\.webmanifest|favicon(?:-[^"'']+)?\.(?:png|svg|ico)|apple-touch-icon\.png)(?=["''])',
+            { param($match) "$($match.Value)?v=$version" }
+          )
+
+          $content = [regex]::Replace(
+            $content,
+            '(?<="(?:image|logo)"\s*:\s*")(assets/[^"]+|favicon(?:-[^"]+)?\.(?:png|svg|ico)|apple-touch-icon\.png)(?=")',
+            { param($match) "$($match.Value)?v=$version" }
+          )
+
+          Set-Content -LiteralPath $indexPath -Value $content -Encoding UTF8
+
+          $sitemapPath = Join-Path $outputDir "sitemap.xml"
+          if (Test-Path $sitemapPath) {
+            $sitemap = Get-Content -LiteralPath $sitemapPath -Raw -Encoding UTF8
+            $sitemap = $sitemap.Replace(
+              "https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/",
+              $siteUrl
+            )
+            $sitemap = [regex]::Replace(
+              $sitemap,
+              '(?<=<lastmod>)[^<]+(?=</lastmod>)',
+              (Get-Date).ToString("yyyy-MM-dd")
+            )
+            Set-Content -LiteralPath $sitemapPath -Value $sitemap -Encoding UTF8
+          }
+
+          $robotsPath = Join-Path $outputDir "robots.txt"
+          if (Test-Path $robotsPath) {
+            $robots = Get-Content -LiteralPath $robotsPath -Raw -Encoding UTF8
+            if ($robots -notmatch '(?im)^Sitemap:\s+') {
+              if (-not $robots.EndsWith("`n")) {
+                $robots += "`n"
+              }
+              $robots += "Sitemap: $($siteUrl)sitemap.xml`n"
+              Set-Content -LiteralPath $robotsPath -Value $robots -Encoding UTF8
+            }
+          }
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

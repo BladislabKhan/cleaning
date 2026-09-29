@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>АкваБлеск — Панель управления сайтом</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/site.webmanifest">
+  <link rel="stylesheet" href="./style.css?v=20260426a">
+</head>
+<body class="admin-body">
+  <section class="auth-shell" data-login-panel>
+    <div class="auth-backdrop"></div>
+    <div class="auth-card">
+      <p class="auth-kicker">АкваБлеск</p>
+      <h1>Вход в ЛК</h1>
+      <form class="auth-form" data-login-form novalidate>
+        <label class="field">
+          <span>Логин</span>
+          <input type="text" name="username" autocomplete="username" required>
+        </label>
+        <label class="field">
+          <span>Пароль</span>
+          <input type="password" name="password" autocomplete="current-password" required>
+        </label>
+        <button class="button button-primary button-large" type="submit">Войти</button>
+        <p class="status-line" data-login-status aria-live="polite"></p>
+      </form>
+      <div class="auth-links">
+        <a href="./forgot-password.html">Забыли пароль?</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-shell is-hidden" data-app-shell>
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Разделы админки">
+        <button class="sidebar-link is-active" type="button" data-screen-target="dashboard" data-nav-main>Дашборд</button>
+        <button class="sidebar-link" type="button" data-action="open-constructor" data-nav-main data-open-constructor>Конструктор</button>
+        <button class="sidebar-link" type="button" data-screen-target="leads" data-nav-main>Заявки</button>
+        <button class="sidebar-link" type="button" data-screen-target="settings" data-nav-main>Настройки</button>
+        <div class="sidebar-nav-group sidebar-nav-group--constructor is-hidden" data-constructor-nav>
+          <button class="sidebar-link sidebar-link--back" type="button" data-action="close-constructor">← Назад</button>
+          <div class="sidebar-nav-pages" data-builder-pages></div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="dirty-indicator dirty-indicator--sidebar" data-dirty-indicator>Без изменений</span>
+        <button class="button button-secondary button-small button-full" type="button" data-open-frontend>Открыть сайт</button>
+        <button class="button button-secondary button-small button-full" type="button" data-action="reset-site" data-reset-site>Сбросить сайт</button>
+        <button class="button button-primary button-small button-full" type="button" data-save-all>Сохранить изменения</button>
+        <button class="button button-ghost button-small button-full" type="button" data-logout>Выйти</button>
+        <div class="sidebar-user" data-current-user>—</div>
+        <div class="sidebar-meta">
+          <span>© АкваБлеск 2026</span>
+          <span>Digital product by BladislavKhan</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="app-frame">
+      <header class="topbar">
+        <div>
+          <p class="topbar-kicker" data-screen-eyebrow>Панель сайта</p>
+          <h1 class="topbar-title" data-screen-title>Дашборд</h1>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="screen-panel" data-screen-panel="dashboard">
+          <div class="screen-grid screen-grid-dashboard">
+            <article class="surface-card surface-card--wide dashboard-hero-card">
+              <div class="surface-head">
+                <div>
+                  <h2>Аналитика сайта</h2>
+                </div>
+              </div>
+              <div class="stats-grid" data-dashboard-stats></div>
+            </article>
+
+            <article class="surface-card surface-card--wide">
+              <div class="surface-head">
+                <div>
+                  <h2>Заявки и трафик</h2>
+                </div>
+              </div>
+              <div class="quick-actions" data-dashboard-actions></div>
+            </article>
+
+          </div>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="leads">
+          <article class="surface-card">
+            <div class="leads-stack" data-leads-editor></div>
+          </article>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="builder">
+          <article class="surface-card">
+            <div class="builder-canvas" data-builder-canvas></div>
+          </article>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="reviews">
+          <article class="surface-card">
+            <div class="surface-head surface-head--tools">
+              <div class="inline-controls">
+                <button class="button button-secondary" type="button" data-add-review>Добавить отзыв</button>
+              </div>
+            </div>
+            <div class="entity-stack" data-reviews-editor></div>
+          </article>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="gallery">
+          <article class="surface-card">
+            <div class="surface-head surface-head--tools">
+              <div class="inline-controls">
+                <button class="button button-secondary" type="button" data-add-gallery-item>Добавить изображение</button>
+              </div>
+            </div>
+            <div class="entity-stack" data-gallery-editor></div>
+          </article>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="beforeafter">
+          <article class="surface-card">
+            <div class="surface-head surface-head--tools">
+              <div class="inline-controls">
+                <button class="button button-secondary" type="button" data-add-beforeafter-item>Добавить пару</button>
+              </div>
+            </div>
+            <div class="entity-stack" data-beforeafter-editor></div>
+          </article>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="menus">
+          <article class="surface-card">
+            <div class="menus-grid" data-menus-editor></div>
+          </article>
+        </section>
+
+        <section class="screen-panel is-hidden" data-screen-panel="settings">
+          <article class="surface-card">
+            <div class="settings-stack" data-settings-editor></div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../site-editor-defaults.js"></script>
+  <script src="../site-config.js"></script>
+  <script type="module" src="./script.js?v=20260421d"></script>
+</body>
+</html>
+
